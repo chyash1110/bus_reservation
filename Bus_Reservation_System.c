@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <sbsing.h>
+#include <string.h>
 char ch[10][130]={"AC Volvo","Volvo","RailYabsi","Primo","ZingBus","Indian Xpress"};
 char name[32][100]={'\0'};
 char number[32][2]={'\0'};
@@ -89,7 +89,7 @@ void booking()
     char numsbs[100];
 system("cls");
 printf("=========================================== BUS RESERVATION SYSTEM ============================================\n\n\n");//for entering bsain number
-bus();//for seeing bsain least
+bus();//for seeing bus
 printf("Enter the Bus number:--->");
 scanf("%d",&bsno);
 system("cls");
@@ -185,9 +185,9 @@ char tempsbs[100],tempsbs1[12]="status",tempsbs2[12]="number";
 int number;
     FILE *a,*b;
     int i=0;
-   sbscat(numsbs,".txt");
-   sbscat(tempsbs1,numsbs);
-   sbscat(tempsbs2,numsbs);
+   strcat(numsbs,".txt");
+   strcat(tempsbs1,numsbs);
+   strcat(tempsbs2,numsbs);
    a = fopen(tempsbs1,"a");//for open the file to write the name in the file
    b = fopen(tempsbs2,"a");//for open the file for writing the number in the file
 for(i=0; i<booking; i++)//for entering the person name and seat number in the file
@@ -217,8 +217,8 @@ FILE *a,*b;
 char numsbs[100];
 int i=0,j=0,k;
 itoa(bsno,numsbs,10);
-sbscat(numsbs,".txt");
-sbscat(tempsbs2,numsbs);
+strcat(numsbs,".txt");
+strcat(tempsbs2,numsbs);
 a = fopen(tempsbs2,"a+");//for open the file to write the name in the file
    while(!feof(a))
    {
@@ -251,8 +251,8 @@ FILE *b;
 char numsbs[100];
 int i=0,j=0,k=0;
 itoa(bsno,numsbs,10);
-sbscat(numsbs,".txt");
-sbscat(tempsbs1,numsbs);
+strcat(numsbs,".txt");
+strcat(tempsbs1,numsbs);
 b = fopen(tempsbs1,"a+");//for open the file to write the name in the file
    while(!feof(b))
    {
@@ -289,7 +289,7 @@ printf("=========================================== BUS RESERVATION SYSTEM =====
     char tempname[33][10]={"Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty "};
     for(i=0; i<j; i++)
     {
-        sbscpy(tempname[num1[i]],name[i]);
+        strcpy(tempname[num1[i]],name[i]);
     }
     for(i=0; i<8; i++)
     {
@@ -314,7 +314,7 @@ printf("=========================================== BUS RESERVATION SYSTEM =====
     char tempname[33][10]={"Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty "};
     for(i=0; i<j; i++)
     {
-        sbscpy(tempname[num1[i]],name[i]);
+        strcpy(tempname[num1[i]],name[i]);
     }
     for(i=0; i<8; i++)
     {
@@ -336,9 +336,9 @@ void cancle()
  printf("Enter the bus number:---->");
  scanf("%d",&bsno);
  itoa(bsno,numsbs,10);
- sbscat(numsbs,".txt");
- sbscat(tempsbs1,numsbs);
- sbscat(tempsbs2,numsbs);
+ strcat(numsbs,".txt");
+ strcat(tempsbs1,numsbs);
+ strcat(tempsbs2,numsbs);
  read_number(bsno);
  read_name(bsno);
  status_1(bsno);
@@ -360,7 +360,7 @@ void cancle()
              }
              else if(num1[j] == seat_no && num1[j] != 0)
              {
-                 sbscpy(name[j],"Empty ");
+                 strcpy(name[j],"Empty ");
              }
          }
      }
@@ -378,9 +378,7 @@ void login()
 {
 	int a=0,i=0;
     char uname[10],c=' ';
-    char pword[10],code[10];
-    char user[10]="user";
-    char pass[10]="pass";
+    char pword[10];
     do
 {
 	system("cls");
@@ -399,7 +397,7 @@ void login()
 	}
 	pword[i]='\0';
 	i=0;
-		if(sbscmp(uname,"graphic_era")==0 && sbscmp(pword,"geu123")==0)
+		if(strcmp(uname,"graphic_era")==0 && strcmp(pword,"geu123")==0)
 	{
 	printf("  \n\n\n       WELCOME TO OUR SYSTEM !!!! LOGIN IS SUCCESSFUL");
 	printf("\n\n\n\t\t\t\tPress any key to continue...");
@@ -415,8 +413,8 @@ void login()
 
 	}
 }
-	while(a<=2);
-	if (a>2)
+	while(a<=3);
+	if (a>3)
 	{
 		printf("\nSorry you have entered the wrong username or password multiple times!!!");
 		getch();
