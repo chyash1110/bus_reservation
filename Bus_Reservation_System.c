@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-char ch[10][130]={"AC Volvo","Volvo","RailYatri","Primo","ZingBus","Indian Xpress"};
+#include <sbsing.h>
+char ch[10][130]={"AC Volvo","Volvo","RailYabsi","Primo","ZingBus","Indian Xpress"};
 char name[32][100]={'\0'};
 char number[32][2]={'\0'};
 int num1[32]={0};
-int trno;
+int bsno;
 void bus();//for list of bus
-void name_number(int booking,char numstr[100]);
+void name_number(int booking,char numsbs[100]);
 void booking();//for booking the tickets
-int read_number(int trno);//for reading the number from the file
-void read_name(int trno);//for reading the name from the file
+int read_number(int bsno);//for reading the number from the file
+void read_name(int bsno);//for reading the name from the file
 void status();//for printing the status by user input
-void status_1(int trno);//for printing the status while booking ticket
+void status_1(int bsno);//for printing the status while booking ticket
 void cancle();
 void login();
 
@@ -86,48 +86,48 @@ void booking()
 {
 
     int i=0;
-    char numstr[100];
+    char numsbs[100];
 system("cls");
-printf("=========================================== BUS RESERVATION SYSTEM ============================================\n\n\n");//for entering train number
-bus();//for seeing train least
+printf("=========================================== BUS RESERVATION SYSTEM ============================================\n\n\n");//for entering bsain number
+bus();//for seeing bsain least
 printf("Enter the Bus number:--->");
-scanf("%d",&trno);
+scanf("%d",&bsno);
 system("cls");
 printf("=========================================== BUS RESERVATION SYSTEM ============================================\n\n\n");//for selecting coach
-printf("Your Bus Number is %d ********** %s",trno,ch[trno-1]);
-status_1(trno);
+printf("Your Bus Number is %d ********** %s",bsno,ch[bsno-1]);
+status_1(bsno);
  FILE *f1, *fopen();//for reading the seats from the user.
- char str1[80]="32",str2[4],str3[4];
+ char sbs1[80]="32",sbs2[4],sbs3[4];
  int seat1,seat2,booking=0;
-if(trno == 1)
+if(bsno == 1)
 {
- f1 = fopen("tr1.txt","r+");
- fgets(str1,80,f1);
+ f1 = fopen("bs1.txt","r+");
+ fgets(sbs1,80,f1);
  fclose(f1);
-}else if(trno == 2)
+}else if(bsno == 2)
 {
- f1 = fopen("tr2.txt","r+");
- fgets(str1,80,f1);
+ f1 = fopen("bs2.txt","r+");
+ fgets(sbs1,80,f1);
  fclose(f1);
-}else if(trno == 3)
+}else if(bsno == 3)
 {
- f1 = fopen("tr3.txt","r+");
- fgets(str1,80,f1);
- fclose(f1);
-}
-else if(trno == 4)
-{
- f1 = fopen("tr4.txt","r+");
- fgets(str1,80,f1);
+ f1 = fopen("bs3.txt","r+");
+ fgets(sbs1,80,f1);
  fclose(f1);
 }
-else if(trno == 5)
+else if(bsno == 4)
 {
- f1 = fopen("tr5.txt","r+");
- fgets(str1,80,f1);
+ f1 = fopen("bs4.txt","r+");
+ fgets(sbs1,80,f1);
  fclose(f1);
 }
-seat1=atoi(str1);//covert the string into number
+else if(bsno == 5)
+{
+ f1 = fopen("bs5.txt","r+");
+ fgets(sbs1,80,f1);
+ fclose(f1);
+}
+seat1=atoi(sbs1);//covert the sbsing into number
 if(seat1 <= 0)
 {
  printf("There is no blank seat in this bus ");
@@ -139,39 +139,39 @@ scanf("%d",&booking);
 printf("\n");
 
 seat1=seat1-booking;
-itoa(trno,numstr,10);
-name_number(booking,numstr);
+itoa(bsno,numsbs,10);
+name_number(booking,numsbs);
 printf("\n\t\t\t\tThe Total booking amount is %d",200*booking);
-itoa(seat1, str1, 10);
+itoa(seat1, sbs1, 10);
 //for reading the seats from the user.
-if(trno == 1)
+if(bsno == 1)
 {
- f1 = fopen("tr1.txt","w");
- fputs(str1,f1);
+ f1 = fopen("bs1.txt","w");
+ fputs(sbs1,f1);
  fclose(f1);
 }
-else if(trno == 2)
+else if(bsno == 2)
 {
- f1 = fopen("tr2.txt","w");
- fputs(str1,f1);
+ f1 = fopen("bs2.txt","w");
+ fputs(sbs1,f1);
   fclose(f1);
 }
-else if(trno == 3)
+else if(bsno == 3)
 {
- f1 = fopen("tr3.txt","w");
- fputs(str1,f1);
+ f1 = fopen("bs3.txt","w");
+ fputs(sbs1,f1);
   fclose(f1);
 }
-else if(trno == 4)
+else if(bsno == 4)
 {
- f1 = fopen("tr4.txt","w");
- fputs(str1,f1);
+ f1 = fopen("bs4.txt","w");
+ fputs(sbs1,f1);
   fclose(f1);
 }
-else if(trno == 5)
+else if(bsno == 5)
 {
- f1 = fopen("tr5.txt","w");
- fputs(str1,f1);
+ f1 = fopen("bs5.txt","w");
+ fputs(sbs1,f1);
  fclose(f1);
 }
 }
@@ -179,17 +179,17 @@ else if(trno == 5)
 
 
 
-void name_number(int booking,char numstr[100])
+void name_number(int booking,char numsbs[100])
 {
-char tempstr[100],tempstr1[12]="status",tempstr2[12]="number";
+char tempsbs[100],tempsbs1[12]="status",tempsbs2[12]="number";
 int number;
     FILE *a,*b;
     int i=0;
-   strcat(numstr,".txt");
-   strcat(tempstr1,numstr);
-   strcat(tempstr2,numstr);
-   a = fopen(tempstr1,"a");//for open the file to write the name in the file
-   b = fopen(tempstr2,"a");//for open the file for writing the number in the file
+   sbscat(numsbs,".txt");
+   sbscat(tempsbs1,numsbs);
+   sbscat(tempsbs2,numsbs);
+   a = fopen(tempsbs1,"a");//for open the file to write the name in the file
+   b = fopen(tempsbs2,"a");//for open the file for writing the number in the file
 for(i=0; i<booking; i++)//for entering the person name and seat number in the file
 {
     printf("============================Enter the details for ticket no %d============================\n\n\n",i+1);
@@ -199,9 +199,9 @@ for(i=0; i<booking; i++)//for entering the person name and seat number in the fi
       scanf("%s",name[number-1]);
     printf("\n======================================================================================================\n\n");
     printf("\n");
-      itoa(number, tempstr, 10);
+      itoa(number, tempsbs, 10);
       fprintf(a,"%s ",name[number-1]);
-      fprintf(b,"%s ",tempstr);
+      fprintf(b,"%s ",tempsbs);
 
 }
 fclose(a);
@@ -210,16 +210,16 @@ fclose(b);
 
 
 
-int read_number(int trno)//for putting the numeric value in the array
+int read_number(int bsno)//for putting the numeric value in the array
 {
-char tempstr[100],tempstr2[12]="number";
+char tempsbs[100],tempsbs2[12]="number";
 FILE *a,*b;
-char numstr[100];
+char numsbs[100];
 int i=0,j=0,k;
-itoa(trno,numstr,10);
-strcat(numstr,".txt");
-strcat(tempstr2,numstr);
-a = fopen(tempstr2,"a+");//for open the file to write the name in the file
+itoa(bsno,numsbs,10);
+sbscat(numsbs,".txt");
+sbscat(tempsbs2,numsbs);
+a = fopen(tempsbs2,"a+");//for open the file to write the name in the file
    while(!feof(a))
    {
       number[i][j] = fgetc(a);
@@ -244,16 +244,16 @@ a = fopen(tempstr2,"a+");//for open the file to write the name in the file
 }
 
 
-void read_name(int trno)//for putting the numeric value in the array
+void read_name(int bsno)//for putting the numeric value in the array
 {
-char tempstr1[12]="status";
+char tempsbs1[12]="status";
 FILE *b;
-char numstr[100];
+char numsbs[100];
 int i=0,j=0,k=0;
-itoa(trno,numstr,10);
-strcat(numstr,".txt");
-strcat(tempstr1,numstr);
-b = fopen(tempstr1,"a+");//for open the file to write the name in the file
+itoa(bsno,numsbs,10);
+sbscat(numsbs,".txt");
+sbscat(tempsbs1,numsbs);
+b = fopen(tempsbs1,"a+");//for open the file to write the name in the file
    while(!feof(b))
    {
       name[i][j] = fgetc(b);
@@ -278,18 +278,18 @@ void status()
 {
 system("cls");
 printf("=========================================== BUS RESERVATION SYSTEM ============================================\n\n\n");
-    int i,trno,index=0,j;
+    int i,bsno,index=0,j;
     printf("Enter the number of bus:---->");
-    scanf("%d",&trno);
-    j=read_number(trno);
-    read_name(trno);
+    scanf("%d",&bsno);
+    j=read_number(bsno);
+    read_name(bsno);
     printf("____________________________________________________________________________________________________________________\n");
-    printf("                                      Bus.no-->%d---->%s                                                            \n",trno,ch[trno-1]);
+    printf("                                      Bus.no-->%d---->%s                                                            \n",bsno,ch[bsno-1]);
     printf("____________________________________________________________________________________________________________________\n");
     char tempname[33][10]={"Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty "};
     for(i=0; i<j; i++)
     {
-        strcpy(tempname[num1[i]],name[i]);
+        sbscpy(tempname[num1[i]],name[i]);
     }
     for(i=0; i<8; i++)
     {
@@ -303,18 +303,18 @@ printf("=========================================== BUS RESERVATION SYSTEM =====
     }
 }
 
-void status_1(int trno)
+void status_1(int bsno)
 {
-    printf("Your Bus Number is %d ********** %s",trno,ch[trno-1]);
+    printf("Your Bus Number is %d ********** %s",bsno,ch[bsno-1]);
     system("cls");
 printf("=========================================== BUS RESERVATION SYSTEM ============================================\n\n\n");
     int i,index=0,j;
-    j=read_number(trno);
-    read_name(trno);
+    j=read_number(bsno);
+    read_name(bsno);
     char tempname[33][10]={"Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty ","Empty "};
     for(i=0; i<j; i++)
     {
-        strcpy(tempname[num1[i]],name[i]);
+        sbscpy(tempname[num1[i]],name[i]);
     }
     for(i=0; i<8; i++)
     {
@@ -332,21 +332,21 @@ printf("=========================================== BUS RESERVATION SYSTEM =====
 void cancle()
 {
  int seat_no,i,j;
- char numstr[100],tempstr2[15]="number",tempstr1[15]="status";
+ char numsbs[100],tempsbs2[15]="number",tempsbs1[15]="status";
  printf("Enter the bus number:---->");
- scanf("%d",&trno);
- itoa(trno,numstr,10);
- strcat(numstr,".txt");
- strcat(tempstr1,numstr);
- strcat(tempstr2,numstr);
- read_number(trno);
- read_name(trno);
- status_1(trno);
+ scanf("%d",&bsno);
+ itoa(bsno,numsbs,10);
+ sbscat(numsbs,".txt");
+ sbscat(tempsbs1,numsbs);
+ sbscat(tempsbs2,numsbs);
+ read_number(bsno);
+ read_name(bsno);
+ status_1(bsno);
  printf("Enter the seat number:--->");
  scanf("%d",&seat_no);
  FILE *a,*b;
- a = fopen(tempstr1,"w+");
- b = fopen(tempstr2,"w+");
+ a = fopen(tempsbs1,"w+");
+ b = fopen(tempsbs2,"w+");
  for(i=0; i<32; i++)
  {
      if(num1[i] == seat_no)
@@ -360,7 +360,7 @@ void cancle()
              }
              else if(num1[j] == seat_no && num1[j] != 0)
              {
-                 strcpy(name[j],"Empty ");
+                 sbscpy(name[j],"Empty ");
              }
          }
      }
@@ -399,7 +399,7 @@ void login()
 	}
 	pword[i]='\0';
 	i=0;
-		if(strcmp(uname,"graphic_era")==0 && strcmp(pword,"geu123")==0)
+		if(sbscmp(uname,"graphic_era")==0 && sbscmp(pword,"geu123")==0)
 	{
 	printf("  \n\n\n       WELCOME TO OUR SYSTEM !!!! LOGIN IS SUCCESSFUL");
 	printf("\n\n\n\t\t\t\tPress any key to continue...");
